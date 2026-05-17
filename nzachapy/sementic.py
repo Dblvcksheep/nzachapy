@@ -2,10 +2,11 @@ from sentence_transformers import SentenceTransformer, util
 import httpx
 from openai import OpenAI
 import torch
+from functools import lru_cache
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-
+@lru_cache(maxsize=5000)
 def embed(data, openai_api_key=None):
     if openai_api_key:
         client = OpenAI(api_key=openai_api_key, http_client=httpx.Client(timeout=None))
