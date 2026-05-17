@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nzachapy"
+version = "0.1.0"
+description = "Context filtering scans your data and returns only the portions relevant to your query."
+authors = [{ name = "Leonard Nwosu" }]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy",
+    "sentence-transformers",
+    "openai",
+    "httpx",
+    "torch"
+]
