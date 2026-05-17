@@ -1,10 +1,10 @@
-from sementic import embed, match_embeddings
+from .sementic import embed, match_embeddings
 
 class Nzacha:
     def __init__(self,
                  chunk_size = 200,
                  overlap = 20,
-                 openai_api_key = None,
+                 openai_api_key: str = None ,
                  threshold = 0.6):
         self.chunk_size = chunk_size
         self.overlap = overlap
@@ -14,7 +14,7 @@ class Nzacha:
         self.text_chunks = []
         self.embeddings = []
 
-    def add_by_words(self, data):
+    def add_by_words(self, data: str):
         data = data.split()
 
         if self.overlap >= self.chunk_size:
@@ -35,7 +35,7 @@ class Nzacha:
 
         return self.text_chunks
 
-    def search(self, query):
+    def search(self, query: str):
         query_embedding = embed(query, self.openai_api_key)
 
         related = match_embeddings(self.embeddings, query_embedding, self.threshold)
@@ -46,7 +46,11 @@ class Nzacha:
             index = item["index"]
             related_data.append(self.text_chunks[index])
 
-        return " ".join(related_data)
+
+        if related_data == []:
+            return "No strong semantic matches found. Consider lowering threshold."
+        else:
+            return " ".join(related_data)
 
 
 
