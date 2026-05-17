@@ -1,18 +1,23 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "nzachapy"
 version = "0.1.0"
-description = "Context filtering scans your data and returns only the portions relevant to your query."
-authors = [{ name = "Leonard Nwosu" }]
+description = "Context filtering module that scans your data and returns only relevant portions based on a query."
 readme = "README.md"
 requires-python = ">=3.8"
+authors = [
+    { name = "Leonard Nwosu" }
+]
+
 dependencies = [
     "numpy",
     "sentence-transformers",
     "openai",
-    "httpx",
-    "torch"
+    "httpx"
 ]
+
+[project.urls]
+Homepage = "https://github.com/Dblvcksheep/nzachapy"
