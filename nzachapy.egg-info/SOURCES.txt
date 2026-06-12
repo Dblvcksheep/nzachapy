@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+nzachapy/__init__.py
+nzachapy/core.py
+nzachapy/sementic.py
+nzachapy.egg-info/PKG-INFO
+nzachapy.egg-info/SOURCES.txt
+nzachapy.egg-info/dependency_links.txt
+nzachapy.egg-info/requires.txt
+nzachapy.egg-info/top_level.txt
+tests/test.py

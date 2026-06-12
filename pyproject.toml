@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nzachapy"
-version = "0.1.0"
+version = "0.1.2"
 description = "Context filtering module that scans your data and returns only relevant portions based on a query."
 readme = "README.md"
 requires-python = ">=3.8"

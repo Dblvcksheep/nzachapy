@@ -14,25 +14,36 @@ class Nzacha:
         self.text_chunks = []
         self.embeddings = []
 
-    def add_by_words(self, data: str):
-        data = data.split()
+    def add_by_words(self, data: str | list):
+        if not isinstance(data, (str, list)):
+            raise TypeError("data must be a string or a list")
 
         if self.overlap >= self.chunk_size:
             raise ValueError("Overlap must be smaller than chunk size")
-        start = 0
-        while start < len(data):
-            end = start + self.chunk_size
-            chunk = data[start:end]
 
-            chunk_text = " ".join(chunk)
+        if isinstance(data, str):
+            data = data.split()
 
-            self.text_chunks.append(chunk_text)
+            start = 0
+            while start < len(data):
+                end = start + self.chunk_size
+                chunk = data[start:end]
 
-            embedding = embed(chunk_text, self.openai_api_key)
-            self.embeddings.append(embedding)
+                chunk_text = " ".join(chunk)
 
-            start += (self.chunk_size - self.overlap)
+                self.text_chunks.append(chunk_text)
 
+                embedding = embed(chunk_text, self.openai_api_key)
+                self.embeddings.append(embedding)
+
+                start += (self.chunk_size - self.overlap)
+
+
+        else:
+            for m in data:
+                self.text_chunks.append(str(m))
+                embedding = embed(str(m),self.openai_api_key)
+                self.embeddings.append(embedding)
         return self.text_chunks
 
     def search(self, query: str):
@@ -47,10 +58,10 @@ class Nzacha:
             related_data.append(self.text_chunks[index])
 
 
-        if related_data == []:
+        if not related_data:
             return "No strong semantic matches found. Consider lowering threshold."
         else:
-            return " ".join(related_data)
+            return related_data
 
 
 

@@ -1,3 +1,18 @@
+Metadata-Version: 2.4
+Name: nzachapy
+Version: 0.1.2
+Summary: Context filtering module that scans your data and returns only relevant portions based on a query.
+Author: Leonard Nwosu
+Project-URL: Homepage, https://github.com/Dblvcksheep/nzachapy
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: sentence-transformers
+Requires-Dist: openai
+Requires-Dist: httpx
+Dynamic: license-file
+
 # nzachapy
 
 > **Context Filtering for LLMs** — Scan your entire dataset and return only the portion relevant to your query.
